@@ -30,8 +30,8 @@ socket.on('user-connected', ( users ) => {
 socket.on('login', ( ) => {
     alert('Bienvenido al Chat, respeta las reglas!')
     loginScreen.style.display = 'none';
-    chatScreen.style.display = 'block';
-    conectedUsersArea.style.display = 'block';
+    chatScreen.style.display = 'inline';
+    conectedUsersArea.style.display = 'inline';
 })
 
 socket.on('login-issue', () => {

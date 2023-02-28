@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset = "UTF-8">
         <title>Chat</title>
-        <link rel="stylesheet" href="index.css">
+        <link rel = "stylesheet" href = "./normalize.css">
+        <link rel = "stylesheet" href = "./app.css">
     </head>
     <body>
-        <ul class="screens">
-            <li class="chat-screen">
-              <div class="chatArea">
-                <ul class="messages"></ul>
-              </div>
-              <input class="inputMessage" placeholder="Escribe aqui..."/>
-              <input type="file" class="photoInput" accept="image/png, image/jpeg" hidden>
-              <button class="photoButton">Foto</button>
-              <button class="inputMessageButton">Enviar</button>
+        <ul class = "screens">
+            <li class = "chat-screen screen">
+                <div class = "chatArea">
+                    <ul class = "messages"></ul>
+                </div>
+                <input  
+                    class       = "inputMessage" 
+                    placeholder = "Escribe aqui..."
+                />
+                <input  
+                    class  = "photoInput" 
+                    type   = "file"  
+                    accept = "image/png, image/jpeg" 
+                    hidden
+                />
+                <button class = "photoButton">Foto</button>
+                <button class = "inputMessageButton">Enviar</button>
             </li>
 
-            <li class="login-screen">
-              <div class="form">
-                <input class="usernameInput" placeholder="Ingresa tu nombre..." type="text" maxlength="14" />
-                <button class="usernameButton">Registrarme</button>
+            <li class = "login-screen screen">
+              <div class = "form">
+                <h1 class="title">Hiram.io:</h1>
+                <input 
+                    class = "usernameInput" 
+                    placeholder = "Ingresa tu nombre" 
+                    type = "text" 
+                    maxlength = "14" 
+                />
+                <br>
+                <button class = "usernameButton">Registrarme</button>
               </div>
             </li>
           </ul>
         
-          <div class="conectedUsersArea">
+          <div class = "conectedUsersArea">
             <h2>Usuarios Conectados:</h2>
-            <ul class="conectedUsers"></ul>
+            <ul class = "conectedUsers"></ul>
           </div>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="./main.js" ></script>
+
+
+        <script src = "/socket.io/socket.io.js"></script>
+        <script src = "./main.js" ></script>
     </body>
 </html>
 
