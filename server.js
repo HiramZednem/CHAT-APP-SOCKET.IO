@@ -26,8 +26,8 @@ io.on('connection', (socket) => {
       }
    });
 
-   socket.on('send-message', (message) => {
-      io.emit('send-message', {message, user: socket.username});
+   socket.on('send-message', ({message, image}) => {
+      io.emit('send-message', {message, user: socket.username, image});
    });
 
    socket.on('disconnect', () => {
