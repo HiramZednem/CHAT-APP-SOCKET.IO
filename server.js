@@ -23,6 +23,7 @@ io.on('connection', (socket) => {
          usuarios[username] = username;
          socket.username = username;
          socket.emit('login');
+         io.emit('user-connected', usuarios);
       }
    });
 
@@ -32,6 +33,7 @@ io.on('connection', (socket) => {
 
    socket.on('disconnect', () => {
       delete usuarios[socket.username];
+      io.emit('user-connected', usuarios);
    }); 
 });
 

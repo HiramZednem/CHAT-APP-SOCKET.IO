@@ -1,7 +1,9 @@
 //HTML SCREENS
 const loginScreen = document.querySelector('.login-screen');
 const chatScreen = document.querySelector('.chat-screen');
+const conectedUsersArea = document.querySelector('.conectedUsersArea');
 chatScreen.style.display = 'none';
+conectedUsersArea.style.display = 'none';
 
 //HTML REFERENCES
 const usernameInput = document.querySelector('.usernameInput');
@@ -9,6 +11,7 @@ const usernameButton = document.querySelector('.usernameButton');
 const inputMessage = document.querySelector('.inputMessage');
 const inputMessageButton = document.querySelector('.inputMessageButton');
 const messagesList = document.querySelector('.messages');
+const conectedUsers = document.querySelector('.conectedUsers');
 const photoInput = document.querySelector('.photoInput');
 const photoButton = document.querySelector('.photoButton');
 
@@ -17,10 +20,18 @@ let DataURL;
 
 const socket = io();
 
-socket.on('login', () => {
+socket.on('user-connected', ( users ) => {
+    conectedUsers.innerHTML = '';
+    for (const user in users) {
+        conectedUsers.insertAdjacentHTML('beforeend',`<li>${user}</li>`);
+    }
+})
+
+socket.on('login', ( ) => {
     alert('Bienvenido al Chat, respeta las reglas!')
     loginScreen.style.display = 'none';
     chatScreen.style.display = 'block';
+    conectedUsersArea.style.display = 'block';
 })
 
 socket.on('login-issue', () => {
