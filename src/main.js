@@ -49,18 +49,29 @@ socket.on('send-message', ({message, user, image}) => {
     window.scrollTo(0, document.body.scrollHeight);
 });
 
+socket.on('send-private-message', ({from, message, image}) => {
+    messagesList.insertAdjacentHTML('beforeend',`<li>[Privado] ${from}: ${message}</li>`);
+    if(image!== undefined){
+        const imagen = document.createElement("img")
+        imagen.src = image
+        messagesList.appendChild(imagen);
+    }
+    window.scrollTo(0, document.body.scrollHeight);
+});
+
 usernameButton.addEventListener('click', ()=>{
     let username = usernameInput.value;
     socket.emit('register', username);
 });
 
 inputMessageButton.addEventListener('click', ()=>{
-    let props = {
-        message: inputMessage.value,
-        image: DataURL
+    if ( inputMessage.value.startsWith('@') ) {
+        const targetUser = inputMessage.value.split(' ')[0].substr(1);
+        const message = inputMessage.value.substr(targetUser.length + 2);
+        socket.emit('send-private-message', { targetUser, message, image: DataURL });
+    }else {
+        socket.emit('send-message', { message: inputMessage.value, image: DataURL});
     }
-
-    socket.emit('send-message', props);
     inputMessage.value = '';
     DataURL = undefined;
 });

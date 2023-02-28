@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
          socket.emit('login-issue');
          return;
       } else {
-         usuarios[username] = username;
+         usuarios[username] = socket.id;
          socket.username = username;
          socket.emit('login');
          io.emit('user-connected', usuarios);
@@ -29,6 +29,13 @@ io.on('connection', (socket) => {
 
    socket.on('send-message', ({message, image}) => {
       io.emit('send-message', {message, user: socket.username, image});
+   });
+
+   socket.on('send-private-message', ({targetUser, message, image}) => {
+      if ( usuarios[targetUser] ) {
+         io.to(usuarios[targetUser]).emit('send-private-message', { from: socket.username, message, image });
+         io.to(usuarios[socket.username]).emit('send-private-message', { from: socket.username, message, image });
+      }
    });
 
    socket.on('disconnect', () => {
