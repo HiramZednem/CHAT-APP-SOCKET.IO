@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Chat</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <ul class="screens">
+            <li class="chat-screen">
+              <div class="chatArea">
+                <ul class="messages"></ul>
+              </div>
+              <input class="inputMessage" placeholder="Escribe aqui..."/>
+              <button class="inputMessageButton">Enviar</button>
+            </li>
+
+            <li class="login-screen">
+              <div class="form">
+                <input class="usernameInput" placeholder="Ingresa tu nombre..." type="text" maxlength="14" />
+                <button class="usernameButton">Registrarme</button>
+              </div>
+            </li>
+          </ul>
+        
+          <div>
+            <ul class="messages">
+                <h2 class="conectedUsers">Usuarios Conectados:</h2>
+            </ul>
+          </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="./main.js" ></script>
+    </body>
+</html>
+
