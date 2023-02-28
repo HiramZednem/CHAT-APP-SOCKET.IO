@@ -35,6 +35,8 @@ io.on('connection', (socket) => {
       if ( usuarios[targetUser] ) {
          io.to(usuarios[targetUser]).emit('send-private-message', { from: socket.username, message, image });
          io.to(usuarios[socket.username]).emit('send-private-message', { from: socket.username, message, image });
+      }else {
+         socket.emit('send-private-message-issue');
       }
    });
 

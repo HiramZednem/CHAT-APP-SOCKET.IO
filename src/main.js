@@ -50,7 +50,7 @@ socket.on('send-message', ({message, user, image}) => {
 });
 
 socket.on('send-private-message', ({from, message, image}) => {
-    messagesList.insertAdjacentHTML('beforeend',`<li>[Privado] ${from}: ${message}</li>`);
+    messagesList.insertAdjacentHTML('beforeend',`<li>[whisper] ${from}: ${message}</li>`);
     if(image!== undefined){
         const imagen = document.createElement("img")
         imagen.src = image
@@ -59,15 +59,20 @@ socket.on('send-private-message', ({from, message, image}) => {
     window.scrollTo(0, document.body.scrollHeight);
 });
 
+socket.on('send-private-message-issue', () => {
+    alert('El usuario al que intentas enviar el mensaje no existe!');
+    usernameInput.value = '';
+})
+
 usernameButton.addEventListener('click', ()=>{
     let username = usernameInput.value;
     socket.emit('register', username);
 });
 
 inputMessageButton.addEventListener('click', ()=>{
-    if ( inputMessage.value.startsWith('@') ) {
-        const targetUser = inputMessage.value.split(' ')[0].substr(1);
-        const message = inputMessage.value.substr(targetUser.length + 2);
+    if ( inputMessage.value.startsWith('/whisper') ) {
+        const targetUser = inputMessage.value.split(' ')[1];
+        const message = inputMessage.value.substr(targetUser.length + 9);
         socket.emit('send-private-message', { targetUser, message, image: DataURL });
     }else {
         socket.emit('send-message', { message: inputMessage.value, image: DataURL});
