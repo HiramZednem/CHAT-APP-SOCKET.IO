@@ -145,3 +145,19 @@ ul {
   float: right;
 }
   
+.grid-container {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 4%;
+}
+
+.conectedUsersArea h2{
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.buttons {
+  bottom: 0;
+  position: absolute;
+  margin-left: 60%;
+}

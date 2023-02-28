@@ -7,44 +7,49 @@
         <link rel = "stylesheet" href = "./app.css">
     </head>
     <body>
-        <ul class = "screens">
-            <li class = "chat-screen screen">
-                <div class = "chatArea">
-                    <ul class = "messages"></ul>
-                </div>
-                <input  
-                    class       = "inputMessage" 
-                    placeholder = "Escribe aqui..."
-                />
-                <input  
-                    class  = "photoInput" 
-                    type   = "file"  
-                    accept = "image/png, image/jpeg" 
-                    hidden
-                />
-                <button class = "photoButton">Foto</button>
-                <button class = "inputMessageButton">Enviar</button>
-            </li>
-
-            <li class = "login-screen screen">
-              <div class = "form">
-                <h1 class="title">Hiram.io:</h1>
-                <input 
-                    class = "usernameInput" 
-                    placeholder = "Ingresa tu nombre" 
-                    type = "text" 
-                    maxlength = "14" 
-                />
-                <br>
-                <button class = "usernameButton">Registrarme</button>
-              </div>
-            </li>
-          </ul>
-        
-          <div class = "conectedUsersArea">
-            <h2>Usuarios Conectados:</h2>
-            <ul class = "conectedUsers"></ul>
-          </div>
+        <div class="grid-container">
+            <div>
+                <ul class = "screens">
+                    <li class = "chat-screen screen">
+                        <div class = "chatArea">
+                            <ul class = "messages"></ul>
+                        </div>
+                        <input  
+                            class       = "inputMessage" 
+                            placeholder = "Escribe aqui..."
+                        />
+                        <input  
+                            class  = "photoInput" 
+                            type   = "file"  
+                            accept = "image/png, image/jpeg" 
+                            hidden
+                        />
+                        <div class="buttons">
+                            <button class = "photoButton">Foto</button>
+                            <button class = "inputMessageButton">Enviar</button>
+                        </div>
+                    </li>
+    
+                    <li class = "login-screen screen">
+                    <div class = "form">
+                        <h1 class="title">Hiram.io:</h1>
+                        <input 
+                            class = "usernameInput" 
+                            placeholder = "Ingresa tu nombre" 
+                            type = "text" 
+                            maxlength = "14" 
+                        />
+                        <br>
+                        <button class = "usernameButton">Registrarme</button>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+            <div class = "conectedUsersArea">
+                <h2>Usuarios Conectados:</h2>
+                <ul class = "conectedUsers"></ul>
+            </div>
+        </div>
 
 
         <script src = "/socket.io/socket.io.js"></script>
